@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"fr.eni.contacts"},{"l":"fr.eni.contacts.bll.comment"},{"l":"fr.eni.contacts.bll.contact"},{"l":"fr.eni.contacts.bll.country"},{"l":"fr.eni.contacts.bo"},{"l":"fr.eni.contacts.dal"},{"l":"fr.eni.contacts.ws"}];updateSearchResults();
