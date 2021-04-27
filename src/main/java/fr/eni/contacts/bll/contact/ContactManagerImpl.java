@@ -6,6 +6,7 @@ package fr.eni.contacts.bll.contact;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -147,6 +148,7 @@ public class ContactManagerImpl implements ContactManager {
 	}
 
 	@Override
+	@Transactional
 	public void addComment(Comment comment, Contact contact) {
 		contact.getComments().add(comment);
 		comment.setContact(contact);
@@ -154,6 +156,20 @@ public class ContactManagerImpl implements ContactManager {
 		daoComment.save(comment);
 		daoContact.save(contact);
 		
+	}
+
+	@Override
+	public List<Comment> getComments(Contact contact) {
+		return daoComment.findByContact(contact);
+	}
+
+	@Override
+	public List<Contact> getByCountryWithoutComments(String country) {
+		Country c = daoCountry.findByName(country);
+		List<Contact> contacts = daoContact.findByCountry(c);
+		List<Contact> withoutComments = contacts.stream().filter(contact -> contact.getComments().isEmpty()).collect(Collectors.toList());
+		
+		return withoutComments;
 	}
 
 }

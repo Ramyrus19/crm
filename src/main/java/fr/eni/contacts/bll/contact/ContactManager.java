@@ -78,7 +78,10 @@ public interface ContactManager {
 	public Contact getById(Integer id);
 
 	public void addComment(Comment comment, Contact contact);
+
+	public List<Comment> getComments(Contact contact);
+
+	public List<Contact> getByCountryWithoutComments(String country);
 	
-	
-	
+
 }

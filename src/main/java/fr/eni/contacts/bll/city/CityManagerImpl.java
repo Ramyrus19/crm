@@ -16,13 +16,11 @@ public class CityManagerImpl implements CityManager{
 	@Override
 	public void add(City city) {
 		dao.save(city);
-		
 	}
 
 	@Override
 	public void delete(City city) {
 		dao.delete(city);
-		
 	}
 
 	@Override

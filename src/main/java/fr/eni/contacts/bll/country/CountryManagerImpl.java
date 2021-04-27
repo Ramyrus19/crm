@@ -16,6 +16,4 @@ public class CountryManagerImpl implements CountryManager {
 		
 		return dao.findByName(name);
 	}
-	
-
 }

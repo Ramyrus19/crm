@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -39,13 +40,14 @@ public class Contact {
 	private City ville;
 	
 	@OneToMany(mappedBy = "contact")
-	@JsonBackReference
+	@JsonManagedReference
 	private List<Comment> comments = new ArrayList<>();
 	
 	@ManyToMany
 	private List<Hobby> hobbies = new ArrayList<>();
 	
 	@ManyToOne
+	@JsonBackReference
 	private Client client;
 
 	public Contact(String nom, String prenom, String telephone, String adresse, String email,

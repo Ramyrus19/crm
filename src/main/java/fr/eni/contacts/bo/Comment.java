@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,7 +24,7 @@ public class Comment {
 	private LocalDate createdAt;
 	
 	@ManyToOne
-	@JsonManagedReference
+	@JsonBackReference
 	private Contact contact;
 
 	public Comment(String text) {

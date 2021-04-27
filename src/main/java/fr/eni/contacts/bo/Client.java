@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -26,6 +28,7 @@ public class Client {
 	private String description;
 	
 	@OneToMany(mappedBy = "client")
+	@JsonManagedReference
 	private List<Contact> lstContact = new ArrayList<>();
 
 	public Client(String name, String description) {
