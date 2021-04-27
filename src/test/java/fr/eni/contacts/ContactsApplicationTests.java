@@ -30,20 +30,13 @@ class ContactsApplicationTests {
 
 		Country france = new Country("France");
 		Country roumanie = new Country("Roumanie");
-		City lyon = new City("69000", "Lyon");
-		lyon.setCountry(france);
-		City paris = new City("75000", "Paris");
-		paris.setCountry(france);
-		City rennes = new City("35000", "Rennes");
-		rennes.setCountry(france);
-		City nantes = new City("44000", "Nantes");
-		nantes.setCountry(france);
-		City montpellier = new City("34000", "Montpellier");
-		montpellier.setCountry(france);
-		City marseille = new City("13000", "Marseille");
-		marseille.setCountry(france);
-		City bucarest = new City("99000", "Bucarest");
-		bucarest.setCountry(roumanie);
+		City lyon = new City("69000", "Lyon", france);
+		City paris = new City("75000", "Paris", france);
+		City rennes = new City("35000", "Rennes", france);
+		City nantes = new City("44000", "Nantes", france);
+		City montpellier = new City("34000", "Montpellier", france);
+		City marseille = new City("13000", "Marseille", france);
+		City bucarest = new City("99000", "Bucarest", roumanie);
 		
 		Contact contact1 = new Contact("Cérien", "Jean", "0245789644", "1 rue du port", "jeancerien@outlook.com", lyon);
 		Contact contact2 = new Contact("Airienafaire", "Jean", "0145789633", "2 rue du port", "jeanairienafaire@gmail.com", paris);

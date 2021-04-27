@@ -16,10 +16,12 @@ import fr.eni.contacts.bo.Contact;
 import fr.eni.contacts.bo.Country;
 import fr.eni.contacts.bo.Hobby;
 import fr.eni.contacts.bo.City;
+import fr.eni.contacts.bo.Comment;
 import fr.eni.contacts.dal.ContactDAO;
 import fr.eni.contacts.dal.CountryDAO;
 import fr.eni.contacts.dal.HobbyDAO;
 import fr.eni.contacts.dal.CityDAO;
+import fr.eni.contacts.dal.CommentDAO;
 
 /**
  * @author ramon
@@ -35,6 +37,9 @@ public class ContactManagerImpl implements ContactManager {
 	private HobbyDAO daoHobby;
 	@Autowired
 	private CountryDAO daoCountry;
+	
+	@Autowired
+	private CommentDAO daoComment;
 
 	@Transactional
 	@Override
@@ -134,6 +139,21 @@ public class ContactManagerImpl implements ContactManager {
 	public List<Contact> getAll() {
 		
 		return (List<Contact>) daoContact.findAll();
+	}
+
+	@Override
+	public Contact getById(Integer id) {
+		return daoContact.findById(id).orElse(null);
+	}
+
+	@Override
+	public void addComment(Comment comment, Contact contact) {
+		contact.getComments().add(comment);
+		comment.setContact(contact);
+		
+		daoComment.save(comment);
+		daoContact.save(contact);
+		
 	}
 
 }

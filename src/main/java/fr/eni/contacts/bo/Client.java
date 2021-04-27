@@ -1,9 +1,14 @@
 package fr.eni.contacts.bo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,18 +16,23 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class Hobby {
-
+public class Client {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	private String nom;
+	
+	@NotBlank(message = "Le nom doit être saisie")
+	private String name;
 	private String description;
+	
+	@OneToMany(mappedBy = "client")
+	private List<Contact> lstContact = new ArrayList<>();
 
-	public Hobby(String nom, String description) {
+	public Client(String name, String description) {
 		super();
-		this.nom = nom;
+		this.name = name;
 		this.description = description;
 	}
-
+	
+	
 }

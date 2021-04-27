@@ -6,6 +6,7 @@ import fr.eni.contacts.bo.Contact;
 import fr.eni.contacts.bo.Country;
 import fr.eni.contacts.bo.Hobby;
 import fr.eni.contacts.bo.City;
+import fr.eni.contacts.bo.Comment;
 
 
 /**
@@ -73,5 +74,11 @@ public interface ContactManager {
 	 * @return a list of hobbies of the contact
 	 */
 	public List<Hobby> getHobbies(Contact contact);
+
+	public Contact getById(Integer id);
+
+	public void addComment(Comment comment, Contact contact);
+	
+	
 	
 }

@@ -16,7 +16,12 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "contact")
 public class Contact {
 	@Id
@@ -39,9 +44,9 @@ public class Contact {
 	
 	@ManyToMany
 	private List<Hobby> hobbies = new ArrayList<>();
-
-	public Contact() {
-	}
+	
+	@ManyToOne
+	private Client client;
 
 	public Contact(String nom, String prenom, String telephone, String adresse, String email,
 			City ville) {
@@ -54,92 +59,4 @@ public class Contact {
 		this.ville = ville;
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getPrenom() {
-		return prenom;
-	}
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-
-	public String getTelephone() {
-		return telephone;
-	}
-
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
-
-	public String getAdresse() {
-		return adresse;
-	}
-
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public LocalDate getDateAjout() {
-		return dateAjout;
-	}
-
-	public void setDateAjout(LocalDate dateAjout) {
-		this.dateAjout = dateAjout;
-	}
-
-	public City getVille() {
-		return ville;
-	}
-
-	public void setVille(City ville) {
-		this.ville = ville;
-	}
-
-	public List<Comment> getComments() {
-		return comments;
-	}
-
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
-	}
-	
-	public List<Hobby> getHobbies() {
-		return hobbies;
-	}
-
-	public void setHobbies(List<Hobby> hobbies) {
-		this.hobbies = hobbies;
-	}
-
-	@Override
-	public String toString() {
-		return "Contact [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", telephone=" + telephone + ", adresse="
-				+ adresse + ", email=" + email + ", dateAjout=" + dateAjout + ", ville=" + ville + "]";
-	}
-
-	
-	
 }
