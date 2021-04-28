@@ -19,4 +19,7 @@ public interface ContactDAO extends CrudRepository<Contact, Integer>{
 
 	@Query("select c from Contact c where c.ville.country = :country")
 	List<Contact> findByCountry(@Param("country") Country country);
+	
+	@Query("from Contact c where c.ville.country.nom = :country and c.comments.size = 0")
+	List<Contact> findByCountryNoComments(@Param("country") String country);
 }

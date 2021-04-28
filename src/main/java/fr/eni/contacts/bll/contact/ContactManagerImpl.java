@@ -165,11 +165,11 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public List<Contact> getByCountryWithoutComments(String country) {
-		Country c = daoCountry.findByName(country);
-		List<Contact> contacts = daoContact.findByCountry(c);
-		List<Contact> withoutComments = contacts.stream().filter(contact -> contact.getComments().isEmpty()).collect(Collectors.toList());
+//		Country c = daoCountry.findByName(country);
+//		List<Contact> contacts = daoContact.findByCountry(c);
+//		List<Contact> withoutComments = contacts.stream().filter(contact -> contact.getComments().isEmpty()).collect(Collectors.toList());
 		
-		return withoutComments;
+		return daoContact.findByCountryNoComments(country);
 	}
 
 }
