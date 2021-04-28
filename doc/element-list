@@ -1,4 +1,6 @@
 fr.eni.contacts
+fr.eni.contacts.bll.city
+fr.eni.contacts.bll.client
 fr.eni.contacts.bll.comment
 fr.eni.contacts.bll.contact
 fr.eni.contacts.bll.country
